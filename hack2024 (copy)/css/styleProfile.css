@@ -1,0 +1,107 @@
+:root {
+    /* --fuenteH: "Dosis", sans-serif;
+    --fuenteP: "Dosis", sans-serif; */
+    --negro-principal: #111;
+    --amarillo: #FCE5A5;
+    --verde: #71b100;
+    --blanco: #ffffff;
+    --negro: #000000;
+    --morada: #6F418A;
+    --rojo: #ff0000;
+  
+  
+  }
+html {
+    height: 100%;
+    width: 100%;
+    box-sizing: border-box;
+    font-size: 62.5%;
+    /* 1 rem = 10px */
+  }
+  
+  *,
+  *:before,
+  *:after {
+    box-sizing: inherit;
+  }
+
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+
+.sidebar {
+    height: 100%;
+    width: 200px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: var(--negro-principal);
+    padding-top: 20px;
+    overflow: hidden;
+}
+.sidebar a {
+    padding: 15px 8px 15px 16px;
+    text-decoration: none;
+    font-size: 3rem;
+    color: white;
+    display: block;
+    margin-bottom: 5rem;
+}
+.sidebar img{
+    margin: 0 auto;
+    max-width: 100%;
+}
+.sidebar a:hover {
+    background-color: #575757;
+}
+
+
+.user-info-container {
+    background: #000000;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    text-align: center;
+    color: #ffffff;
+    font-size: 15px;
+}
+
+.user-profile {
+    margin-bottom: 20px;
+}
+
+.user-avatar {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+.user-details p {
+    margin: 10px 0;
+}
+
+.user-details h2 {
+    margin-top: 20px;
+}
+
+.user-details ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.user-details ul li {
+    background: #333333;
+    padding: 10px;
+    border-radius: 4px;
+    margin: 5px 0;
+}

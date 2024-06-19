@@ -1,0 +1,61 @@
+<!-- // Obtener el idusuario de la URL
+const urlParams = new URLSearchParams(window.location.search);
+const idusuario = urlParams.get('id');
+
+// Hacer algo con idusuario, por ejemplo, mostrar contenido específico del usuario -->
+<!-- console.log('ID de usuario:', idusuario); -->
+
+
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cursos disponibles</title>
+    <link href="css/styles.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+
+<div class="sidebar">
+    <img src="img/logos.svg" alt="Logo principal">
+    <a href="#">Cursos</a>
+    <!-- Aquí puedes agregar enlaces a otras partes de tu aplicación -->
+    <a href="#" id="perfilLink">Mi perfil</a>
+    <a href="index.html">Cerrar sesión</a>
+</div>
+
+<div class="content">
+    <h2>Temas disponibles</h2>
+    <div id="tareasContainer" class="contenedor-tareas">
+        <!-- Aquí se cargarán dinámicamente los cursos -->
+    </div>
+</div>
+
+<script src="tareas.js"></script>
+<script>
+
+const currentUrl = window.location.href;
+
+const url = new URL(currentUrl);
+
+const params = url.searchParams;
+
+const curso = params.get('course');
+const persona = params.get('person');
+
+document.addEventListener('keydown', function(event) {
+    if (event.key === 'q') {
+        window.location.href = '/cursos.html?id=' + persona;
+    }
+    if (event.key === 'w') {
+        window.location.href = '/perfil.html?id=' + persona;
+    }
+    if (event.key === 'e') {
+        window.location.href = 'index.html';
+    }
+});
+
+</script>
+</body>
+</html>

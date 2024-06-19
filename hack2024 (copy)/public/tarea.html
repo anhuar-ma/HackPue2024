@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frontend-Backend Example</title>
+    <link href="css/styles.css" rel="stylesheet" />
+    <style>
+        .single-digit-input {
+            width: 30px; /* Ajusta el ancho del input */
+            text-align: center; /* Centra el texto en el input */
+            font-size: 2rem;
+            border-radius: 1rem;
+        }
+        .error-message {
+            color: red;
+            font-weight: bold;
+        }
+    </style>
+    <script>
+        let form1Correct = false;
+        let form2Correct = false;
+
+        function checkForms() {
+            if (form1Correct && form2Correct) {
+                document.getElementById("salir").disabled = false;
+            }
+        }
+
+        function validarFormulario1(event) {
+            event.preventDefault(); // Evita el envío del formulario por defecto
+
+            const respuesta1 = document.forms["form1"]["q1"].value;
+            if (respuesta1 != "3") {
+                alert("Respuesta incorrecta en la Pregunta 1. La respuesta correcta es 3.");
+                return false;
+            } else {
+                alert("Respuesta correcta en la Pregunta 1. ¡Bien hecho!");
+                form1Correct = true;
+                checkForms();
+            }
+        }
+
+        function validarFormulario2(event) {
+            event.preventDefault(); // Evita el envío del formulario por defecto
+
+            const respuesta2 = document.forms["form2"]["q2"].value;
+            if (respuesta2 != "8") {
+                alert("Respuesta incorrecta en la Pregunta 2. La respuesta correcta es 8.");
+                return false;
+            } else {
+                alert("Respuesta correcta en la Pregunta 2. ¡Bien hecho!");
+                form2Correct = true;
+                checkForms();
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", function() {
+            document.getElementById("form1").addEventListener("submit", validarFormulario1);
+            document.getElementById("form2").addEventListener("submit", validarFormulario2);
+        });
+    </script>
+</head>
+<body>
+    <div class="sidebar">
+        <img src="img/logos.svg" alt="Logo principal">
+        <a href="" id="cursosLink">Cursos</a>
+        <!-- Aquí puedes agregar enlaces a otras partes de tu aplicación -->
+        <a href="" id="perfilLink">Mi perfil</a>
+        <a href="index.html">Cerrar sesión</a>
+    </div>
+        <div class="content">
+
+        <h2>Conociendo los operadores</h2>
+        <div class="contenedor-tareas">
+            <div class="tarea tarea2">
+                 <div class="contenido-tarea">
+                    <h3 class="titulo-curso">¿Qué son los operadores?</h3>
+                    <p class="text-info">Los operadores en matemáticas son como herramientas especiales que usamos para hacer cosas con números. Es como tener una caja de herramientas para arreglar cosas, pero en matemáticas usamos estos "operadores" para hacer sumas, restas, multiplicaciones y divisiones.</p>
+                </div>
+            </div><!--anuncio-->
+            <div class="tarea tarea2">
+                <div class="contenido-tarea">
+                   <h3 class="titulo-curso">Conoce al operador Suma</h3>
+                   <p class="text-info">El operador de suma es el signo más (+). Por ejemplo, si tienes 2 manzanas y añades 3 más, usas el operador de suma para obtener 5 manzanas en total.</p>
+               </div>
+           </div><!--anuncio-->
+        </div>
+        <form id="form1" action="">
+            <div class="tarea3">
+                <div class="question">
+                    <h3>Hora de practicar</h3>
+                    <h4>Pregunta 1: Completa la ecuación: 2 + 
+                        <input type="text" name="q1" class="single-digit-input"> = 5
+                    </h4>
+                </div>
+                <div class="boton-tarea">
+                    <button class="boton-amarillo-block" type="submit">Calificar</button>
+                </div>
+            </div>
+        </form>
+        
+        <div class="tarea tarea2">
+            <div class="contenido-tarea">
+               <h3 class="titulo-curso">Conoce al operador Resta</h3>
+               <p class="text-info">Si tienes 5 caramelos y te comes 2, ¿cuántos caramelos te quedan? Para saberlo, restamos:
+                5 - 2 = 3
+                Así que te quedan 3 caramelos.</p>
+           </div>
+       </div>
+    
+       <form id="form2" action="">
+        <div class="tarea3">
+            <div class="question">
+                <h3>Hora de practicar</h3>
+                <h4>Pregunta 2: Completa la ecuación: 4 + 
+                    <input type="text" name="q2" class="single-digit-input"> = 12
+                </h4>
+            </div>
+            <div class="boton-tarea">
+                <button class="boton-amarillo-block" type="submit">Calificar</button>
+            </div>
+        </div>
+    </form>
+    <button class="boton-amarillo-block" id="salir" disabled>Marcar como completado</button>
+    </div>
+
+
+    <button id="chatbot-toggle-btn"><img src="./img/bot.svg" alt="buttonpng" /></button>
+    <div class="chatbot-popup" id="chatbot-popup">
+        <div class="chat-header">
+            <span>Chatbot | Aprende sin limites</span>
+            <button id="close-btn">&times;</button>
+        </div>
+        <div class="chat-box" id="chat-box"></div>
+        <div class="chat-input">
+            <input type="text" id="user-input" placeholder="Escribe un mensaje...">
+            <button id="startStopButton"><img src="../mic.png" alt=""></button>
+<!--            <button id="uploadButton" disabled value="hidden"></button>-->
+<!--            <audio id="audioPlayback" controls value="hidden"></audio>-->
+            <button id="send-btn">Enviar</button>
+        </div>
+    </div>
+<script src="app.js"></script>
+<script>
+    const currentUrl = window.location.href;
+
+    const url = new URL(currentUrl);
+    
+    const params = url.searchParams;
+    
+    const persona = params.get('person');
+
+    document.addEventListener('keydown', function(event) {
+        if (event.key === 'q') {
+            window.location.href = '/cursos.html?id=' + persona;
+        }
+        if (event.key === 'w') {
+            window.location.href = '/perfil.html?id=' + persona;
+        }
+        if (event.key === 'e') {
+            window.location.href = 'index.html';
+        }
+    });
+
+</script>
+<script src="audio.js"></script>
+</body>
+</html>
